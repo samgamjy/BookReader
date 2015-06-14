@@ -1,0 +1,38 @@
+<!--suppress ALL -->
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context-3.0.xsd
+            http://www.springframework.org/schema/aop
+            http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+    <context:annotation-config/>
+    <context:component-scan base-package="main.java.by.academy.it.pojos"/>
+    <aop:config>
+        <aop:pointcut id="beforeRead"
+                      expression="execution(* main.java.by.academy.it.pojos.BookReaderImpl.readBooks(String)) and args(fileName)"/>
+        <aop:pointcut id="afterRead"
+                      expression="execution(* main.java.by.academy.it.pojos.BookReaderImpl.readBooks(String)) and args(fileName)"/>
+        <aop:aspect ref="bookAspect">
+            <aop:before pointcut-ref="beforeRead" method="logBefore" arg-names="fileName"/>
+            <aop:after-returning pointcut-ref="afterRead" method="logAfter" arg-names="fileName"/>
+        </aop:aspect>
+    </aop:config>
+   <!-- <aop:config>
+        <aop:aspect ref="bookAspect">
+            <aop:before pointcut="execution(* main.java.by.academy.it.pojos.BookReaderImpl.readBooks(String)) and args(fileName)"
+                        method="logBefore"/>
+            <aop:after-returning pointcut="execution(* main.java.by.academy.it.pojos.BookReaderImpl.readBooks(String)) and args(fileName)"
+                        method="logAfter"/>
+        </aop:aspect>
+    </aop:config>-->
+<!--
+    <aop:aspectj-autoproxy/>
+    <context:annotation-config/>
+    <context:component-scan base-package="main.java.by.academy.it.pojos"/>
+    <bean name="BookReader" class="main.java.by.academy.it.pojos.BookReaderImpl"/>
+    <bean name="BookAspect" class="main.java.by.academy.it.pojos.aspect.BookAspect"/>
+-->
+</beans>
