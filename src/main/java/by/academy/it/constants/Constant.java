@@ -1,4 +1,4 @@
-package main.java.by.academy.it.constants;
+package by.academy.it.constants;
 
 /**
  * Created by sam on 11.06.2015.

@@ -1,4 +1,4 @@
-package main.java.by.academy.it.pojos.aspect;
+package by.academy.it.aspect;
 
 import org.springframework.aop.MethodBeforeAdvice;
 

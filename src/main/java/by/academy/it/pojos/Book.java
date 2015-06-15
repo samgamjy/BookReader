@@ -1,18 +1,35 @@
-package main.java.by.academy.it.pojos;
+package by.academy.it.pojos;
 
-/**
- * Created by sam on 11.06.2015.
- */
-public class Book {
 
+import javax.persistence.*;
+import java.io.Serializable;
+
+@Entity
+@Table(name = "book_reader")
+public class Book implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
+    @Column(name = "name")
     private String bookName;
+    @Column(name = "author")
     private String author;
+    @Column(name = "year")
     private String year;
 
     public Book(String bookName, String author, String year) {
         this.bookName = bookName;
         this.author = author;
         this.year = year;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getBookName() {
