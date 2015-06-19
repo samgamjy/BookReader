@@ -6,6 +6,8 @@ import by.academy.it.dao.exceptions.DaoException;
 import by.academy.it.pojos.Book;
 import by.academy.it.pojos.BookReader;
 import static by.academy.it.constants.Constant.*;
+
+import by.academy.it.pojos.BookReaderImpl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
